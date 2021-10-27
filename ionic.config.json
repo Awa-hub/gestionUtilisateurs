@@ -1,0 +1,7 @@
+{
+  "name": "gestionU",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
