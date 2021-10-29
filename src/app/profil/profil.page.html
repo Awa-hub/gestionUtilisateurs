@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar class="tool">
+    <ion-back-button routerLink="/home" routerLinkActive="router-link-active"  slot="start"></ion-back-button>
+    <ion-title>Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-buttons slot="end">
+    <ion-button routerLink="/reinitialise">Changer mot de passe</ion-button>
+  </ion-buttons>
+  <div class="container">
+    <div class="outer">
+      <img src='../../assets/images/user.png'>
+        <div class="inner">
+          <ion-icon name="camera" class="camera-icon"></ion-icon>
+        </div>
+        
+    </div>
+  </div>
+  <div class="detail">
+    <h2><ion-label>Nom:</ion-label>{{user?.nom}}</h2>
+    <h2><ion-label>Prenom:</ion-label>{{user?.prenom}}</h2>
+    <p>{{user?.email}}</p>
+      <ion-button routerLink="/reinitialise">Changer mot de passe</ion-button>
+  </div>
+  
+
+</ion-content>

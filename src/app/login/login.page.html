@@ -1,0 +1,27 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+   
+    <ion-buttons slot="end">
+      <ion-button routerLink="/register">S'inscrire</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="header">
+    <h1>Login</h1>
+    <img src="assets/images/user.png" />
+  </div>
+
+  <form id="form" #form="ngForm" (ngSubmit)="logForm(form)">
+    <ion-item>
+      <ion-input type="email" name="login" ngModel placeholder="Email"></ion-input>
+  </ion-item>
+    
+  <ion-item >
+      <ion-input type="password" name="password" ngModel placeholder="Mot de passe"></ion-input>
+  </ion-item>
+  <ion-text slot="end"><p class="oublie" routerLink="/oublie">Mot de passe oublier</p></ion-text>
+    <ion-button type="submit" expand="block" shape="round">Connexion</ion-button>
+  </form>
+</ion-content>

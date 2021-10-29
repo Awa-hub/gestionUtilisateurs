@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button routerLink="">Se connecter</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>Créer votre<br />Compte</h1>
+  <form id="form" #form="ngForm" (ngSubmit)="logForm(form)">
+  <ion-item>
+      <ion-input type="text" name="nom" ngModel placeholder="Nom"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" name="prenom" ngModel placeholder="Prenom"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="email" name="email" ngModel placeholder="Email"></ion-input>
+  </ion-item>
+    
+  <ion-item >
+      <ion-input type="password" name="password" ngModel placeholder="Mot de passe"></ion-input>
+  </ion-item>
+   
+    <ion-button type="submit" expand="block"  shape="round">S'inscrire</ion-button>
+  </form>
+</ion-content>
