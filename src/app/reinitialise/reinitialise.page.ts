@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { FirebaseApp } from '@angular/fire/app';
+import { ServiceService } from '../MesServices/service.service';
 
 @Component({
   selector: 'app-reinitialise',
@@ -13,7 +14,8 @@ export class ReinitialisePage implements OnInit {
   user: any
   userConnnect: FirebaseApp
 
-  constructor(private auth: AngularFireAuth, private fire: AngularFirestore, private route: Router) { }
+  constructor(private auth: AngularFireAuth, private fire: AngularFirestore, private route: Router,
+    public service: ServiceService) { }
 
   ngOnInit() {
   }
@@ -26,11 +28,17 @@ export class ReinitialisePage implements OnInit {
             if(this.user.password == pass.value.old_pass){
               if(pass.value.new_pass == pass.value.conf_new ){
                 auth.updatePassword(pass.value.new_pass);
-                this.route.navigate(['home'])
+                this.fire.collection('utilisateur').doc(auth.uid).update({
+                  'password': pass.value.new_pass
+                });
+                this.route.navigate(['home']);
+                this.service.myMessage("Mot de passe modifier","success")
 
               }else{
-                console.log("le nouveau mot de passe et l'ancien sont different");
+
+                console.log("le nouveau mot de passe et le mot de passe confimer sont different");
               }
+              this.service.myMessage("le nouveau mot de passe et le mot de passe confimer sont different","danger")
             }else {
               console.log("Ancien mot de passe incorrecte");
             }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-
+import { ServiceService } from '../MesServices/service.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +18,7 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private auth: AngularFireAuth,
-    private store: AngularFirestore, private router: Router) { }
+    private store: AngularFirestore, private router: Router, public service: ServiceService) { }
 
   ngOnInit() {
   }
@@ -38,6 +38,7 @@ export class RegisterPage implements OnInit {
           "password": this.password
         }).then(() => {
           this.router.navigate([''])
+          this.service.myMessage("Vous êtes inscrit","success")
         }).catch(error =>{
           console.log('Non enregistrez...')
         })
